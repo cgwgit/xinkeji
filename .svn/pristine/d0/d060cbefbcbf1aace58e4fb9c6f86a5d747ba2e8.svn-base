@@ -1,0 +1,7 @@
+.user_table td{
+    width: 33%;
+}
+
+.user_table td label{
+    text-align: right;
+}

@@ -1,0 +1,287 @@
+<include file="Index/head"/>
+<!--你自己的样式文件 -->
+<css href="__PUBLIC__/admin/css/style.css" />
+<section class="container">
+    <h2>会员查看-{$Users.fullName}</h2>
+    <p><a href="javascript:history.go(-1);" class="btn btn-sm btn-info">返回</a></p>
+    <div class="col-lg-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    会员基本信息
+                </h3>
+            </div>
+            <table class="table user_table">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">手机号:</label>
+                            <div class="col-sm-8">{$Users.mobileNo}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">姓名:</label>
+                            <div class="col-sm-8">{$Users.fullName}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group has-error">
+                            <label class="col-sm-4 control-label">密码:</label>
+                            <div class="col-sm-8">
+                                <button class="btn btn-sm btn-danger" attr-id="{$Users.Id}" id="button-passwordReset">重置密码</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">车牌号:</label>
+                            <div class="col-sm-8">{$Users.plateNo}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">车型:</label>
+                            <div class="col-sm-8">{$Users.carType}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">装货吨数:</label>
+                            <div class="col-sm-8">{$Users.tonnage} 吨</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">积分:</label>
+                            <div class="col-sm-8">
+                                {$Users.integral}
+                                &nbsp;&nbsp;
+                                <button class="btn btn-sm btn-danger" attr-id="{$Users.Id}" id="button-integral">增加积分</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">注册时间:</label>
+                            <div class="col-sm-8">{$Users.registerDateTime}</div>
+                        </div>
+                    </td>
+                    <td></td>
+                    <!--<td>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-sm-4 control-label">状态:</label>-->
+                            <!--<div class="col-sm-8">-->
+                                <!--<if condition="$Users.statusAudit eq 0">-->
+                                    <!--<button class="btn btn-sm btn-success" attr-id="{$Users.Id}" arrt-val="1" id="button-passed">通过</button>-->
+                                    <!--<button class="btn btn-sm btn-default" attr-id="{$Users.Id}" arrt-val="-1" id="button-not-passed">不通过</button>-->
+                                    <!--<else />-->
+                                    <!--<span class="label label-{$Users['statusAudit']|getStatus=array('warning','success','default','danger')}">{$Users['statusAudit']|getStatus=array('待审核','已通过','未通过','错误')}</span>-->
+                                <!--</if>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--<if condition="$Users.statusAudit eq -1">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-sm-4 control-label">退回原因:</label>-->
+                                <!--<div class="col-sm-8">{$Users.reason}</div>-->
+                            <!--</div>-->
+                        <!--</if>-->
+                    <!--</td>-->
+                </tr>
+            </table>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    会员其他信息
+                </h3>
+            </div>
+            <table class="table user_table">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">港口账号:</label>
+                            <div class="col-sm-8">{$Users.portNo|default="未填写"}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">港口密码:</label>
+                            <div class="col-sm-8">{$Users.portPassword|default="未填写"}</div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">银行卡:</label>
+                            <div class="col-sm-8">{$Users.bankCard|default="未填写"}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">银行户名:</label>
+                            <div class="col-sm-8">{$Users.bankName|default="未填写"}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">开户行:</label>
+                            <div class="col-sm-8">{$Users.bankOpen|default="未填写"}</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--会员扩展信息/TAB切换-->
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#logistics" data-toggle="tab">物流订单</a></li>
+            <li><a href="#amerce" data-toggle="tab">罚款订单</a></li>
+            <li><a href="#shop" data-toggle="tab">商城订单</a></li>
+
+        </ul>
+        <div id="myTabContent" class="tab-content">
+
+            <div class="tab-pane fade in active" id="logistics">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th width="150">订单号</th>
+                        <th>任务发布人</th>
+                        <th>装货地</th>
+                        <th>卸货地</th>
+                        <th>装货吨数</th>
+                        <th width="80">处理状态</th>
+                        <th width="170">接单时间</th>
+                        <th width="80">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="LogisticsOrders" id="LogisticsOrder" empty="空">
+                        <tr>
+                            <td>{$LogisticsOrder.orderNo}</td>
+                            <td>{$LogisticsOrder.logisticsId|findLinkageById='logistics','release'}</td>
+                            <td>{$LogisticsOrder.logisticsId|findLinkageById='logistics','loadingAddr'}</td>
+                            <td>{$LogisticsOrder.logisticsId|findLinkageById='logistics','unloadingAddr'}</td>
+                            <td>{$LogisticsOrder.tonnage} 吨</td>
+                            <td>
+                                <span class="label label-{$LogisticsOrder.handle|getStatus=array('warning','success','info','danger')}">{$LogisticsOrder.handle|getStatus=array('未处理','已结款','已处理','错误')}</span>
+                            </td>
+                            <td>{$LogisticsOrder.shippingDate}</td>
+                            <td>
+                                <button attr-id="{$LogisticsOrder.Id}" id="Logistics-see" class="btn btn-sm btn-default">查看</button>
+                            </td>
+                        </tr>
+                    </volist>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="amerce">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th width="50">id</th>
+                        <th>罚单号</th>
+                        <th>处罚金额</th>
+                        <th>滞纳金</th>
+                        <th>服务费</th>
+                        <th width="170">罚款日期</th>
+                        <th width="80">状态</th>
+                        <th width="170">提交时间</th>
+                        <th width="80">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="Amerces" id="Amerce" empty="空">
+                        <tr>
+                            <td>{$Amerce.Id}</td>
+                            <td>{$Amerce.amerceNo}</td>
+                            <td>{$Amerce.money} 元</td>
+                            <td>{$Amerce.lateMoney} 元</td>
+                            <td>{$Amerce.serviceMoney} 元</td>
+                            <td>{$Amerce.amerceDateTime}</td>
+                            <td>
+                                <span class="label label-{$Amerce.financeHandle|getStatus=array('warning','success','default','danger')}">{$Amerce.financeHandle|getStatus=array('未处理','已处理','已退回','错误')}</span>
+                            </td>
+                            <td>{$Amerce.submitDateTime}</td>
+                            <td>
+                                <button attr-id="{$Amerce.Id}" id="Amerce-see" class="btn btn-sm btn-default">查看</button>
+                            </td>
+                        </tr>
+                    </volist>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="shop">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th width="100">订单号</th>
+                        <th>商品</th>
+                        <th width="80">积分</th>
+                        <th width="80">处理状态</th>
+                        <th width="170">下单时间</th>
+                        <th width="80">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="IntegralOrders" id="IntegralOrder" empty="空">
+                        <tr>
+                            <td>{$IntegralOrder.orderNo}</td>
+                            <td>{$IntegralOrder.mallId|findLinkageById='integral_mall','title'}</td>
+                            <td>{$IntegralOrder.integral}</td>
+                            <td>
+                                <span class="label label-{$IntegralOrder.handleState|getStatus=array('warning','success','default','danger')}">{$IntegralOrder.handleState|getStatus=array('未处理','已收货','已发货','错误')}</span>
+                            </td>
+                            <td>{$IntegralOrder.updateTime}</td>
+                            <td>
+                                <button attr-id="{$IntegralOrder.Id}" id="Integral-see" class="btn btn-sm btn-default">查看</button>
+                            </td>
+                        </tr>
+                    </volist>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--<form class="form-horizontal" id="singcms-form">-->
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-2 control-label">类别名称:</label>-->
+                <!--<label class="col-sm-5 control-label">123123</label>-->
+                <!--<div class="col-sm-5">-->
+                    <!--123123-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<input type="hidden" name="Id" value="{$LogisticsType.Id}">-->
+            <!--<div class="form-group">-->
+                <!--<div class="col-sm-offset-2 col-sm-10">-->
+                    <!--<button type="button" class="btn btn-default" id="singcms-button-submit">修改</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+
+    </div>
+
+</section>
+<script>
+    var SCOPE = {
+        'audit_modify_url' : '/dswiliu/admin.php?c=user&a=userModify',
+        'Logistics_see_url': '/dswiliu/admin.php?c=LogisticsOrder&a=see',
+        'Amerce_see_url': '/dswiliu/admin.php?c=Amerce&a=see',
+        'Integral_see_url': '/dswiliu/admin.php?c=IntegralOrder&a=see',
+    }
+</script>
+<include file="Index/foot"/>
+

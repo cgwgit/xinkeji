@@ -1,0 +1,88 @@
+<include file="Index/head"/>
+<!--你自己的样式文件 -->
+<css href="__PUBLIC__/admin/css/style.css" />
+
+<section class="container">
+    <h2>员工管理</h2>
+
+    <div class="form-group">
+        <div class="col-sm-1">
+            <button id="button-add" class="btn btn-sm btn-success col-sm-12">添加</button>
+        </div>
+        <form action="/dswiliu/admin.php" method="get">
+            <div class="col-md-offset-4 col-sm-2">
+                <select class="form-control" name="admin_type">
+                    <option value="">管理类别</option>
+                    <option value="1" <eq name="search.admin_type" value="1">selected="selected"</eq>>业务员</option>
+                    <option value="2" <eq name="search.admin_type" value="2">selected="selected"</eq>>财务员</option>
+                    <option value="0" <eq name="search.admin_type" value="0">selected="selected"</eq>>超级管理员</option>
+                </select>
+            </div>
+            <!--<div class="col-sm-2">-->
+                <!--<select class="form-control" name="status">-->
+                    <!--<option value="">员工状态</option>-->
+                    <!--<option value="1" <eq name="search.status" value="1">selected="selected"</eq>>冻结</option>-->
+                    <!--<option value="-1" <eq name="search.status" value="-1">selected="selected"</eq>>离职</option>-->
+                    <!--<option value="0" <eq name="search.status" value="0">selected="selected"</eq>>在职</option>-->
+                <!--</select>-->
+            <!--</div>-->
+
+
+            <div class="col-sm-2">
+                <input type="text" name="admin_name" class="form-control" placeholder="员工姓名"
+                       value="{$search.admin_name}">
+            </div>
+            <div class="col-sm-2">
+                <input type="text" name="admin_login_name" class="form-control" placeholder="登陆账号"
+                       value="{$search.admin_login_name}">
+            </div>
+            <input type="hidden" name="c" value="admin">
+            <input type="hidden" name="a" value="index">
+            <div class="col-sm-1">
+                <button id="button-search" type="submit" class="btn btn-sm btn-info col-sm-12">搜索</button>
+            </div>
+        </form>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th width="50">id</th>
+            <th>登陆账号</th>
+            <th width="150">员工姓名</th>
+            <th width="150">管理类别</th>
+            <th width="150">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="Admins" id="Admin" empty="空">
+            <tr>
+                <td>{$Admin.Id}</td>
+                <td>{$Admin.admin_login_name}</td>
+                <td>{$Admin.admin_name}</td>
+                <td>{$Admin.admin_type}</td>
+                <td>
+                    <button attr-id="{$Admin.Id}" id="button-see" class="btn btn-sm btn-default">查看</button>
+                    <button attr-id="{$Admin.Id}" attr-a="menu" attr-message="删除" id="button-del"
+                            class="btn btn-sm btn-danger">删除
+                    </button>
+                </td>
+            </tr>
+        </volist>
+
+        </tbody>
+    </table>
+    <nav>
+        <ul>
+            {$pageRes}
+        </ul>
+    </nav>
+</section>
+<script>
+    var SCOPE = {
+        'add_url' : '/dswiliu/admin.php?c=Admin&a=add',
+        'see_url': '/dswiliu/admin.php?c=Admin&a=see',
+        'del_url': '/dswiliu/admin.php?c=Admin&a=del',
+    }
+</script>
+<include file="Index/foot"/>

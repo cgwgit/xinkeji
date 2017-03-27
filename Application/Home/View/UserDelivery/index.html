@@ -1,0 +1,30 @@
+<include file="Index/head"/>
+<header class="top_white top_blue_goBack" headerHref="{:U('User/index')}">管理收货地址</header>
+<section class="user_form">
+    <volist name="UserDeliverys" id="UserDelivery" empty="空">
+        <ul class="user_delivery" id="ul-modify" attr-id="{$UserDelivery.Id}">
+            <li><span>{$UserDelivery.consignee}</span><span>{$UserDelivery.mobileNo}</span></li>
+            <li class="user_delivery_address">{$UserDelivery.area}{$UserDelivery.address}</li>
+            <li>
+                <button attr-id="{$UserDelivery.Id}" id="button-del" type="button" attr-a="menu" attr-message="删除">删除地址
+                </button>
+            </li>
+        </ul>
+    </volist>
+    <nav>
+        <ul>
+            {$pageRes}
+        </ul>
+    </nav>
+
+    <button id="button-add">增加新地址</button>
+</section>
+
+<script>
+    var SCOPE = {
+        'add_url' : '/dswiliu/index.php?c=userDelivery&a=add',
+        'modify_url' : '/dswiliu/index.php?c=userDelivery&a=modify',
+        'del_url': '/dswiliu/index.php?c=userDelivery&a=del',
+    }
+</script>
+<include file="Index/foot"/>

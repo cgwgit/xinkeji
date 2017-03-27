@@ -1,0 +1,10 @@
+<include file="head"/>
+<!--你自己的样式文件 -->
+<css href="__PUBLIC__/admin/css/index.css" />
+<include file="header"/>
+<include file="nav"/>
+<section>
+    <iframe frameborder="0" src="{$adminUser.url}" name="admin"></iframe>
+</section>
+
+<include file="foot"/>

@@ -1,0 +1,63 @@
+<include file="head"/>
+
+<CSS href="__PUBLIC__/Index/css/dropload.css"/>
+<form action="{:U('Index/index')}" method="post">
+    <header class="top_blue">
+
+        <empty name="search.typeName">
+            <a class="top_logo" href="{:U('Index/index')}">
+            <img src="__PUBLIC__/Index/images/Logo.png">
+            青岛东升超越物流
+            </a>
+            <else />
+            <a class="top_logo top_center" href="{:U('Index/index')}">
+            {$search.typeName}
+            </a>
+        </empty>
+
+        <div>
+            <input type="text" name="title" placeholder="请输入关键字">
+        </div>
+
+        <a class="top_search J_default">
+            <i class="iconfont">&#xe604;</i>
+        </a>
+    </header>
+</form>
+
+<section class="index loadFather">
+    <div class="loadSon"></div>
+</section>
+<include file="menu"/>
+<script>
+    var SCOPE = {
+        'logistics_order_url': '/dswiliu/index.php?c=index&a=logisticsOrder',
+        'jump_url': '/dswiliu/index.php?c=index.php&a=datum',
+        'drop_load_url': '/dswiliu/index.php?a=indexLoad&typeId={$search.typeId}&title={$search.title}',
+    }
+</script>
+<include file="foot"/>
+<js href="__PUBLIC__/Index/js/dropload.min.js"/>
+<js href="__PUBLIC__/Index/js/drop_load_all.js"/>
+<script>
+    function dataLoad(data) {
+        var result = '';
+
+        for (var i = 0; i < data.length; i++) {
+            result += '<ul class="J_logistics">'
+                    + '<li><i class="iconfont">&#xe60a;</i>' + data[i].release.substr(0 ,10)
+                    + '<span>' + data[i].releaseDateTime.substr(0 ,10) + '</span></li>'
+                    + '<li><i class="iconBlue iconfont">&#xe603;</i><b>货&nbsp;&nbsp;&nbsp;名：</b>' + data[i].goodsName + '</li>'
+                    + '<li><i class="iconBlue iconfont">&#xe603;</i><b>剩余量：</b>' + data[i].surplus + '吨</li>'
+                    + '<li><i class="iconYellow iconfont">&#xe603;</i><b>装货地：</b>' + data[i].loadingAddr + '</li>'
+                    + '<li><i class="iconOrange iconfont">&#xe603;</i><b>卸货地：</b>' + data[i].unloadingAddr + '</li>'
+                    + '<li><i class="iconPurple iconfont">&#xe603;</i><b>价&nbsp;&nbsp;&nbsp;格：</b>' + parseFloat(data[i].Price) + '元/吨</li>'
+                    + '<li><i class="iconBlue iconfont">&#xe603;</i><b>装货数：</b>' + parseFloat(data[i].tonnage) + '吨</li>'
+                    + '<li><a id="logistics-placeOrder" attr-id="' + data[i].Id + '" attr-payWay="' + data[i].payWay
+                    + '" attr-tonnage="' + data[i].tonnage
+                    + '" attr-message="立即下单">立即下单</a></li>'
+                    + '</ul>';
+        }
+        return result;
+    }
+</script>

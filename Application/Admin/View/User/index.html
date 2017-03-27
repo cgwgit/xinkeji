@@ -1,0 +1,79 @@
+<include file="Index/head"/>
+<!--你自己的样式文件 -->
+<css href="__PUBLIC__/admin/css/style.css"/>
+<section class="container">
+    <h2>会员信息</h2>
+    <div class="form-group">
+        <form action="/dswiliu/admin.php" method="get">
+            <!--<div class="col-md-offset-3 col-sm-2">-->
+                <!--<select class="form-control" name="searchStatusAudit">-->
+                    <!--<option value="">审核状态</option>-->
+                    <!--<option value="0" <if condition="$search.searchStatusAudit eq 0">selected="selected"</if>>待审核</option>-->
+                    <!--<option value="-1" <if condition="$search.searchStatusAudit eq -1">selected="selected"</if>>未通过</option>-->
+                    <!--<option value="1" <if condition="$search.searchStatusAudit eq 1">selected="selected"</if>>已通过</option>-->
+                <!--</select>-->
+            <!--</div>-->
+
+            <div class="col-md-offset-5 col-sm-2">
+                <input type="text" name="searchMobileNo" class="form-control" placeholder="手机号"
+                       value="{$search.searchMobileNo}">
+            </div>
+            <div class="col-sm-2">
+                <input type="text" name="searchPlateNo" class="form-control" placeholder="车牌号" value="{$search.searchPlateNo}">
+            </div>
+            <div class="col-sm-2">
+                <input type="text" name="searchFullName" class="form-control" placeholder="姓名"
+                       value="{$search.searchFullName}">
+            </div>
+            <input type="hidden" name="c" value="user">
+            <input type="hidden" name="a" value="index">
+            <div class="col-sm-1">
+                <button id="button-search" type="submit" class="btn btn-sm btn-info col-sm-12">搜索</button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>手机号</th>
+            <th>车牌号</th>
+            <th>姓名</th>
+            <th>车型</th>
+            <!--<th width="80">状态</th>-->
+            <th width="170">注册时间</th>
+            <th width="80">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="Users" id="User" empty="空">
+            <tr>
+                <td width="50">{$User.Id}</td>
+                <td>{$User.mobileNo}</td>
+                <td>{$User.plateNo}</td>
+                <td>{$User.fullName}</td>
+                <td>{$User.carType}</td>
+                <!--<td>-->
+                    <!--<span class="label label-{$User['statusAudit']|getStatus=array('warning','success','default','danger')}">{$User['statusAudit']|getStatus=array('待审核','已通过','未通过','错误')}</span>-->
+                <!--</td>-->
+                <td>{$User.registerDateTime}</td>
+                <td>
+                    <button attr-id="{$User.Id}" id="button-see" class="btn btn-sm btn-default">查看</button>
+                </td>
+            </tr>
+        </volist>
+
+        </tbody>
+    </table>
+    <nav>
+        <ul>
+            {$pageRes}
+        </ul>
+    </nav>
+</section>
+<script>
+    var SCOPE = {
+        'see_url': '/dswiliu/admin.php?c=User&a=see',
+    }
+</script>
+<include file="Index/foot"/>

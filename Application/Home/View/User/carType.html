@@ -1,0 +1,26 @@
+<include file="Index/head" />
+<header class="top_white top_blue_goBack" onclick="javascript:history.go(-1);">修改车型</header>
+<section class="user_form">
+
+<!--    <div class="user_submit_hint hint_wrong">注册失败，请完善详细信息</div>-->
+<!--    <div class="user_submit_hint hint_error">注册成功，请完善详细信息</div>-->
+    <form name="register" method="post" id="register-form">
+        <ul class="user_form_group">
+            <li>
+                <span>车 型</span>
+                <span><input type="text" name="carType" placeholder="输入银行卡号" value="{$UserMobileNo.carType}"></span>
+            </li>
+        </ul>
+        <input type="hidden" name="registerType" value="carType">
+        <div class="user_form_button">
+            <button type="button" id="register-submit">确认修改车型</button>
+        </div>
+    </form>
+</section>
+<script>
+    var SCOPE = {
+        'save_url' : '/dswiliu/index.php?c=user&a=registerBank',
+        'jump_url' : '/dswiliu/index.php?c=user&a=datum',
+    }
+</script>
+<include file="Index/foot" />

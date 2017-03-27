@@ -1,0 +1,835 @@
+/*
+* @description: 初始化文件
+* @author: MR.QI (2016-10-18 16:20)
+* @update: null
+*/
+* {
+    font-family: '微软雅黑';
+}
+
+section:after, ul:after, li:after, a.top_user:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+section:after {
+    height: 50px;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.2rem;
+}
+
+html, body {
+    width: 100%;
+    max-width: 640px;
+    min-width: 320px;
+    height: 100%;
+    margin: 0 auto;
+    background: #F0F0F0;
+    color: #000;
+
+}
+
+ul {
+    padding: 0px;
+    list-style-type: none;
+}
+
+a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #676767;
+}
+
+a:visited {
+    color: #676767;
+}
+
+a:hover {
+    color: #CC3335;
+}
+
+a:active {
+    color: #CC3335;
+}
+
+header.top_blue {
+    width: 100%;
+    height: 50px;
+    background: #1EA2E0;
+    line-height: 50px;
+    color: #FFFFFF;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+}
+header.top_blue a.top_center{
+    text-align: center;
+    background: url("../images/userListArrowLeftBlue.png") no-repeat 5% center #1EA2E0;
+}
+
+header.top_blue a.top_logo,header.top_blue div {
+    display: block;
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    font-size: 2rem;
+    color: #FFFFFF;
+}
+header.top_blue div{
+    text-align: center;
+    display: none;
+}
+header.top_blue div input{
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    border: 0px;
+    border-bottom: 1px solid #FFFFFF;
+    background: none;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    outline: none;
+}
+
+header.top_blue div input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #FFFFFF !important;
+}
+header.top_blue div input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #FFFFFF !important;
+}
+header.top_blue div input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #FFFFFF !important;
+}
+header.top_blue div input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #FFFFFF !important;
+}
+
+header.top_blue a.top_logo img {
+    margin-left: 10px;
+    vertical-align: middle;
+    max-height: 35px;
+}
+
+header.top_blue a.top_search {
+    display: block;
+    width: 35px;
+}
+
+header.top_blue a.top_search i {
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+section.index ul {
+    width: 90%;
+    height: auto;
+    background: #FFFFFF;
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 0 2%;
+}
+
+
+
+section.index ul li {
+    font-size: 1.4rem;
+    float: left;
+    width: 50%;
+    line-height: 25px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+section.index ul li:first-child {
+    width: 100%;
+    font-size: 1.6rem;
+    line-height: 35px;
+}
+
+section.index ul li:first-child i {
+    font-size: 2.0rem;
+    color: #D7D7D7;
+}
+
+section.index ul li:first-child span {
+    color: #989898;
+    float: right;
+    margin-right: 5px;
+}
+
+section.index ul li:last-child {
+    width: 100%;
+    border-bottom: none;
+}
+
+section.index ul li:last-child a {
+    display: block;
+    width: 118px;
+    height: 25px;
+    background: #FE8E44;
+    border-radius: 5px;
+    margin: 5px auto;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #FFFFFF;
+}
+
+section.index ul li:last-child a:visited {
+    color: #FFFFFF;
+}
+
+section.index ul li:last-child a:hover {
+    color: #FFFFFF;
+}
+
+section.index ul li:last-child a:active {
+    color: #FFFFFF;
+}
+
+section.index ul li i {
+    font-size: 1rem;
+    vertical-align: top;
+    margin: 0 5px;
+}
+
+section.index ul li i.iconBlue {
+    color: #4CCDE0;
+}
+
+section.index ul li i.iconYellow {
+    color: #FEC106;
+}
+
+section.index ul li i.iconOrange {
+    color: #FE8E44;
+}
+
+section.index ul li i.iconPurple {
+    color: #D90552;
+}
+
+section.index ul li b {
+    display: inline-block;
+    font-weight: normal;
+    width: 60px;
+    text-align: right;
+}
+
+nav.bottom_menu {
+    height: 50px;
+    width: 100%;
+    background: #1EA2E0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+nav.bottom_menu a {
+    float: left;
+    width: 25%;
+    height: 100%;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 5px;
+}
+
+nav.bottom_menu a#logisticsType {
+    position: relative;
+}
+
+nav.bottom_menu a#logisticsType > ul {
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    margin: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px 10px 0 0;
+    display: none;
+}
+
+nav.bottom_menu a#logisticsType > ul li {
+    line-height: 40px;
+    border-bottom: 1px solid #E0E0E0;
+    color: #0f0f0f;
+}
+
+nav.bottom_menu a.bottom_menu_selected {
+    background: #FFFFFF;
+    color: #1EA2E0;
+}
+
+nav.bottom_menu a i {
+    font-size: 2.5rem;
+}
+
+header.top_white {
+    width: 100%;
+    height: 50px;
+    background: #FFFFFF;
+    line-height: 50px;
+    font-size: 2rem;
+    text-align: center;
+    box-shadow: 0px 0px 5px #273244
+}
+
+header.top_goBack {
+    background: url("../images/userListArrowLeft.png") no-repeat 5% center #1EA2E0;
+}
+
+header.top_blue_goBack {
+    background: url("../images/userListArrowLeftBlue.png") no-repeat 5% center #1EA2E0;
+    color: #FFFFFF;
+}
+
+section.user_form ul.user_form_group {
+    margin: 15px 0;
+    background: #FFFFFF;
+}
+
+section.user_form ul.user_form_group li {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #E0E0E0;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+}
+
+section.user_form ul.user_form_group li span {
+    display: block;
+    margin-left: 10px;
+}
+
+section.user_form ul.user_form_group li span.carArea {
+    width: 55px;
+    font-size: 1.8rem;
+    background: #1EA2E0;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin: 5px 0 5px 10px;
+    padding-left: 5px;
+    line-height: 40px;
+}
+
+section.user_form ul.user_form_group li span.carArea b {
+    float: right;
+    border-left: 1px solid #FFFFFF;
+    padding: 0 3px;
+}
+
+section.user_form ul.user_form_group li span:first-child {
+    width: 100px;
+    font-size: 1.8rem;
+    text-align: justify;
+    text-align-last: justify;
+}
+
+section.user_form ul.user_form_group li span:last-child {
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    font-size: 1.6rem;
+
+}
+
+section.user_form ul.user_datum_group li span:last-child {
+    font-size: 1.8rem;
+    text-align: right;
+    padding-right: 10%;
+}
+
+section.user_form ul.user_datum_group li[liHref] {
+    cursor: pointer;
+    background: url("../images/userListArrow.png") no-repeat 95% center;
+}
+
+section.user_form ul.user_datum_group li.user_datum_modify span {
+    font-size: 1.6rem;
+    color: #737373;
+}
+
+section.user_form ul.user_datum_error {
+    color: #c9302c;
+}
+
+section.user_form ul.user_datum_warning {
+    color: #f0ad4e;
+}
+
+section.user_form ul.user_datum_warning li span:last-child {
+    background: none;
+}
+
+section.user_form ul.user_form_group li span.user_form_Login {
+    width: 50px;
+}
+
+section.user_form ul.user_form_group li span input {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.8rem;
+    border: 0;
+    padding: 0;
+    outline: none;
+}
+.user_amerce_button{
+    position: relative;
+}
+.user_amerce_button button{
+    width: 100px;
+    height: 30px;
+    border: 0;
+    border-radius: 5px;
+    background: #1EA2E0;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+}
+.user_amerce_button input[type=file] {
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.user_amerce_button div{
+    float: right;
+}
+
+section.user_form ul.user_delivery li button {
+    border: 0;
+    width: 100%;
+    height: 30px;
+    background: #ffffff;
+    color: #B1000B;
+    font-size: 1.8rem;
+}
+
+section.user_form div.user_submit_hint {
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 0px 0px 5px 5px;
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 5px 0;
+    color: #FFFFFF;
+}
+
+section.user_form div.hint_success {
+    background: #97D206;
+}
+
+section.user_form div.hint_wrong {
+    background: #F9953D;
+}
+
+section.user_form div.hint_error {
+    background: #B1000B;
+}
+
+section.user_form div.user_form_hint {
+    width: 95%;
+    padding-bottom: 10px;
+    text-align: right;
+    font-size: 1.4rem;
+}
+
+section.user_form div.user_form_hint span {
+    color: #FE6632;
+}
+
+section.user_form div.user_form_hint a {
+    font-size: 1.4rem;
+    color: #41637F;
+}
+
+section.user_form div.user_form_hint a:visited {
+    color: #41637F;
+}
+
+section.user_form div.user_form_hint a:hover {
+    color: #41637F;
+}
+
+section.user_form div.user_form_hint a:active {
+    color: #41637F;
+}
+div.user_form_button {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+div.user_form_button button {
+    width: 236px;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    background: #1EA2E0;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+}
+
+
+
+
+a.top_user {
+    display: block;
+    width: 100%;
+    background: #1EA2E0;
+    padding: 30px 0;
+}
+
+a.top_user > * {
+    float: left;
+}
+
+div.user_img_border {
+    background: #FFFFFF;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    border: 2px solid #00CCFF;
+    border-radius: 50%;
+    margin: 0 3%;
+}
+
+div.user_img_border img {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+a.top_user > ul {
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: #FFFFFF;
+    font-size: 3.0rem;
+}
+
+a.top_user > ul > li:first-child {
+    font-size: 2.5rem;
+}
+
+a.top_user > ul > li:last-child {
+    font-size: 1.5rem;
+}
+
+a.top_user > div.top_user_more {
+    float: right;
+    height: 80px;
+    line-height: 80px;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    margin-right: 3%;
+}
+
+section.user ul {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+}
+
+section.user ul li {
+    font-size: 1.6rem;
+    line-height: 25px;
+    padding: 10px 0;
+    border-bottom: 1px solid #E0E0E0;
+    text-indent: 20px;
+}
+
+section.user ul li[liHref] {
+    cursor: pointer;
+    background: url("../images/userListArrow.png") no-repeat 95% center;
+}
+
+section.user ul li.user_pay a {
+    float: left;
+    width: 33%;
+    text-indent: 0;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #000000;
+}
+
+section.user ul li.user_pay a:visited {
+    color: #000000;
+}
+
+section.user ul li.user_pay a:hover {
+    color: #000000;
+}
+
+section.user ul li.user_pay a:active {
+    color: #000000;
+}
+
+section.user ul li.user_pay a i {
+    font-size: 3.0rem;
+    font-style: normal;
+    color: #767676;
+}
+
+section.logisticsOrder ul.logisticsOrderType, section.IntegralsOrder ul.IntegralsOrderType {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    border-top: 1px solid #F0F0F0;
+}
+
+section.logisticsOrder ul.logisticsOrderType li,
+section.IntegralsOrder ul.IntegralsOrderType li {
+    float: left;
+    width: 25%;
+    line-height: 35px;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+section.logisticsOrder ul.logisticsOrderType li.logisticsOrderTypeChecked,
+section.IntegralsOrder ul.IntegralsOrderType li.IntegralsOrderTypeChecked {
+    border-bottom: 2px solid #1EA2E0;
+    color: #1EA2E0;
+}
+
+section.logisticsOrder ul li.logisticsOrderList,
+section.IntegralsOrder ul li.IntegralsOrderList{
+    background: #FFFFFF;
+    margin: 10px 0;
+}
+
+section.logisticsOrder ul li.logisticsOrderList table,
+section.IntegralsOrder ul li.IntegralsOrderList table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+section.logisticsOrder ul li.logisticsOrderList table tr td,
+section.logisticsOrder ul li.logisticsOrderList table tr th{
+    font-size: 1.2rem;
+    border: 1px solid #F0F0F0;
+    line-height: 25px;
+    width: 50%;
+}
+
+section.logisticsOrder ul li.logisticsOrderList table tr td span {
+    display: inline-block;
+    width: 70px;
+    text-align: right;
+    color: #1EA2E0;
+    margin-right: 5px;
+}
+
+section.logisticsOrder ul li.logisticsOrderList table tr th {
+    padding-left: 10px;
+}
+
+section.logisticsOrder ul li.logisticsOrderList table tr th span {
+    float: right;
+    width: 50px;
+    color: #1EA2E0;
+    font-weight: normal;
+}
+
+section.logisticsOrder ul li.logisticsOrderList table tr td button {
+    border: 0;
+    width: 100%;
+    height: 30px;
+    background: #1EA2E0;
+    color: #FFFFFF;
+    font-size: 1.8rem;
+}
+
+section.integralMall ul.integralMallList {
+    width: 95%;
+    margin: 5px auto;
+}
+
+section.integralMall ul.integralMallList li {
+    width: 48%;
+    float: left;
+    background: #FFFFFF;
+    margin: 3px 1%;
+}
+
+ul.integralMallList li img, ul.integralMall li img, table.integralMallShopping td img {
+    width: 100%;
+}
+
+ul.integralMallList li div.integralMallTitle,
+ul.integralMall li.integralMallTitle,
+table.integralMallShopping td.integralMallTitle {
+    font-size: 1.8rem;
+    padding: 5px 5px 0px 5px;
+    line-height: 25px;
+}
+
+
+
+
+section.integral table.integralMallShopping {
+    width: 100%;
+    background: #ffffff;
+}
+
+table.integralMallShopping tr td[rowspan="3"] {
+    width: 100px;
+    border-right: 1px solid #F0F0F0;
+    border-top: 1px solid #F0F0F0;
+}
+
+section.integral div.integralDeliveryTitle {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 1.6rem;
+    background: #1EA2E0;
+    color: #FFFFFF;
+    margin: 10px 0;
+    text-indent: 15px;
+}
+
+section.integral ul li {
+    text-indent: 0;
+    padding: 0;
+    border: 0;
+}
+
+ul.integralMall li.integralMallOther {
+    border-top: 1px solid #E0E0E0;
+}
+
+ul.integralMall li.integralMallOther span, table.integralMallShopping td.integralMallOther span {
+    float: left;
+    width: 25%;
+    margin: 0 4%;
+    color: #999999;
+    font-size: 1.4rem;
+}
+
+table.integralMallShopping td.integralMallOther span{
+    width: 100%;
+}
+
+ul.integralMallContent li.integralMallContentTitle {
+    border-bottom: 1px solid #1EA2E0;
+    text-align: center;
+    color: #1EA2E0;
+    font-size: 1.8rem;
+    line-height: 40px;
+}
+
+ul.integralMallContent li:last-child {
+    min-height: 150px;
+}
+
+section.integral > button, section.user_form > button {
+    border: 0;
+    width: 100%;
+    height: 50px;
+    background: #1EA2E0;
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+section.user_form ul.user_delivery {
+    margin: 15px 0;
+    background: #FFFFFF;
+}
+
+ul.user_delivery li {
+    width: 95%;
+    margin: 0 auto;
+    font-size: 1.6rem;
+
+}
+
+ul.user_delivery li.user_delivery_address {
+    min-height: 50px;
+    padding: 5px 0;
+}
+
+ul.user_delivery li:first-child span, ul.user_delivery li:last-child span {
+    float: left;
+    width: 50%;
+    line-height: 30px;
+    height: 30px;
+}
+
+ul.user_delivery li:first-child span:last-child, ul.user_delivery li:last-child span:last-child {
+    text-align: right;
+}
+
+ul.user_delivery li:last-child {
+    border-top: 1px solid #F0F0F0;
+}
+
+ul.checked {
+    color: #1EA2E0;
+}
+
+ul.checked li:last-child {
+    border-top: 1px solid #1EA2E0;
+}
+
+table.integralMallShopping tr:first-child td:first-child {
+    width: 120px;
+}
+
+table.integralMallShopping td.integralMallOrderNo{
+    font-size: 1.4rem;
+    padding: 5px 5px 0px 5px;
+    line-height: 25px;
+
+
+
+}
+table.integralMallShopping td.integralMallOrderNo span{
+    display: inline-block;
+    width: 70px;
+    text-align: right;
+    color: #1EA2E0;
+    margin-right: 5px;
+    font-size: 1.2rem;
+    float: right;
+}
+
+.integralMallParameter {
+    height: 30px;
+    padding: 5px;
+    color: #EB5F5E;
+    font-size: 2.0rem;
+    vertical-align: middle;
+}
+
+.integralMallParameter i{
+
+    margin:0 5px;
+}
+
+ul.integralMallList li div.integralMallParameter span {
+    float: right;
+    color: #999999;
+    font-size: 1.2rem;
+}

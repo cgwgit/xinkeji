@@ -1,0 +1,71 @@
+<include file="Index/head"/>
+<!--你自己的样式文件 -->
+<css href="__PUBLIC__/admin/css/style.css"/>
+<section class="container">
+    <h2>积分商品</h2>
+    <div class="form-group">
+        <div class="col-sm-1">
+            <button id="button-add" class="btn btn-sm btn-success col-sm-12">添加</button>
+        </div>
+        <form action="/dswiliu/admin.php" method="get">
+            <div class="col-md-offset-7 col-sm-3">
+                <input type="text" name="searchTitle" class="form-control" placeholder="商品标题关键字"
+                       value="{$search.searchTitle}">
+            </div>
+            <input type="hidden" name="c" value="IntegralMall">
+            <input type="hidden" name="a" value="index">
+            <div class="col-sm-1">
+                <button id="button-search" type="submit" class="btn btn-sm btn-info col-sm-12">搜索</button>
+            </div>
+        </form>
+    </div>
+
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>标题</th>
+            <th>积分</th>
+            <th>运费</th>
+            <th>库存</th>
+            <th>销量</th>
+            <th>更新时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="IntegralMalls" id="IntegralMall" empty="空">
+            <tr>
+                <td width="50">{$IntegralMall.Id}</td>
+                <td>{$IntegralMall.title}</td>
+                <td>{$IntegralMall.integral}</td>
+                <td>{$IntegralMall.freight}</td>
+                <td>{$IntegralMall.stock}</td>
+                <td>{$IntegralMall.sales}</td>
+                <td>{$IntegralMall.updateTime}</td>
+                <td>
+                    <button attr-id="{$IntegralMall.Id}" id="button-modify" class="btn btn-sm btn-info">修改</button>
+                    <button attr-id="{$IntegralMall.Id}" attr-a="menu" attr-message="删除" id="button-del"
+                            class="btn btn-sm btn-danger">删除
+                    </button>
+                </td>
+            </tr>
+        </volist>
+
+        </tbody>
+    </table>
+    <nav>
+        <ul>
+            {$pageRes}
+        </ul>
+    </nav>
+</section>
+<script>
+    var SCOPE = {
+        'add_url': '/dswiliu/admin.php?c=IntegralMall&a=add',
+        'modify_url': '/dswiliu/admin.php?c=IntegralMall&a=modify',
+        'del_url': '/dswiliu/admin.php?c=IntegralMall&a=del',
+    }
+</script>
+<include file="Index/foot"/>

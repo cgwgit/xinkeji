@@ -1,0 +1,94 @@
+<include file="Index/head" />
+<header class="top_white top_blue_goBack" onclick="javascript:history.go(-1);">账号详情</header>
+<section class="user_form">
+
+    <form action="registerPort.html" name="register" method="post">
+
+
+        <ul class="user_form_group user_datum_group">
+            <li>
+                <span>手 机 号</span>
+                <span>{$userCenter.mobileNo}</span>
+            </li>
+            <li id="ul-register" liHref="/dswiliu/index.php?c=User&a=fullName">
+                <span>姓 名</span>
+                <span>{$userCenter.fullName}</span>
+            </li>
+            <li>
+                <span>车 牌 号</span>
+                <span>{$userCenter.plateNo}</span>
+            </li>
+            <li id="ul-register" liHref="/dswiliu/index.php?c=User&a=carType">
+                <span>车 型</span>
+                <span>{$userCenter.carType}</span>
+            </li>
+            <li id="ul-register" class="user_datum_modify" liHref="/dswiliu/index.php?c=User&a=passwordModify">
+                <span></span>
+                <span>修改密码</span>
+            </li>
+        </ul>
+
+        <ul class="user_form_group user_datum_group">
+            <li>
+                <span>积分</span>
+                <span>{$userCenter.integral}</span>
+            </li>
+        </ul>
+
+        <if condition="$userCenter.portNo AND $userCenter.portPassword ">
+            <ul class="user_form_group user_datum_group">
+                <li>
+                    <span>港 口 账 号</span>
+                    <span>{$userCenter.portNo}</span>
+                </li>
+                <li>
+                    <span>港 口 密 码</span>
+                    <span>{$userCenter.portPassword}</span>
+                </li>
+                <li id="ul-register" class="user_datum_modify" liHref="/dswiliu/index.php?c=User&a=registerPort">
+                    <span></span>
+                    <span>修改港口信息</span>
+                </li>
+            </ul>
+            <else />
+            <ul class="user_form_group user_datum_group">
+                <li id="ul-register" liHref="/dswiliu/index.php?c=User&a=registerPort">
+                    <span>港口信息</span>
+                    <span>请完善港口信息</span>
+                </li>
+            </ul>
+        </if>
+
+        <if condition="$userCenter.bankCard AND $userCenter.bankName AND $userCenter.bankOpen ">
+            <ul class="user_form_group user_datum_group">
+                <li>
+                    <span>银 行 卡</span>
+                    <span>{$userCenter.bankCard}</span>
+                </li>
+                <li>
+                    <span>银 行 户 名</span>
+                    <span>{$userCenter.bankName}</span>
+                </li>
+                <li>
+                    <span>开 户 行</span>
+                    <span>{$userCenter.bankOpen}</span>
+                </li>
+                <li id="ul-register" class="user_datum_modify" liHref="/dswiliu/index.php?c=User&a=registerBank">
+                    <span></span>
+                    <span>修改银行信息</span>
+                </li>
+            </ul>
+
+            <else />
+            <ul class="user_form_group user_datum_group">
+                <li id="ul-register" liHref="/dswiliu/index.php?c=User&a=registerBank">
+                    <span>银行信息</span>
+                    <span>请完善银行信息</span>
+                </li>
+            </ul>
+        </if>
+    </form>
+</section>
+
+<include file="Index/menu" />
+<include file="Index/foot" />

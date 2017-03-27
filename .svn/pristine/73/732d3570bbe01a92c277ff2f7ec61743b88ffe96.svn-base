@@ -1,0 +1,14 @@
+<!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
+<js href="__PUBLIC__/admin/js/jquery-1.11.0.min.js" />
+
+ <!--包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
+<js href="__PUBLIC__/admin/bootstrap/js/bootstrap.min.js" />
+
+<js href="__PUBLIC__/layer/layer.js" />
+<js href="__PUBLIC__/layer/dialog.js" />
+
+<js href="__PUBLIC__/admin/js/common.js" />
+
+
+</body>
+</html>

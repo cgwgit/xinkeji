@@ -1,0 +1,50 @@
+<include file="Index/head"/>
+
+<header class="top_white top_blue_goBack" onclick="javascript:history.go(-1);">确认兑换</header>
+
+<section class="user integral">
+    <table class="integralMallShopping">
+        <tr>
+            <td rowspan="3"><img src="__PUBLIC__/Index/images/shangpin.jpg"></td>
+            <td class="integralMallTitle">{$IntegralMall.title}</td>
+        </tr>
+        <tr>
+            <td class="integralMallParameter"><i class="iconfont">&#xe605;</i>{$IntegralMall.integral}</td>
+        </tr>
+        <tr>
+            <td class="integralMallOther">
+                <span>运费：{$IntegralMall.freight}</span>
+                <span>剩余：{$IntegralMall.surplus}</span>
+                <span>销量：{$IntegralMall.sales}</span>
+            </td>
+        </tr>
+    </table>
+
+    <div class="integralDeliveryTitle">请选择地址</div>
+<div class="integralDeliveryTitle">固定取货点：</div>
+    <ul class="user_delivery checked" id="deliveryChecked" attr-id="1">
+        <li><span>{$DsUser.fullName}</span><span>{$DsUser.mobileNo}</span></li>
+        <li class="user_delivery_address">取货点：董家口港停车场15号东升超越物流 18853218203</li>
+    </ul>
+	<ul class="user_delivery" id="deliveryChecked" attr-id="2">
+        <li><span>{$DsUser.fullName}</span><span>{$DsUser.mobileNo}</span></li>
+        <li class="user_delivery_address">取货点：前湾港停车场司机之家饭店 15064834456</li>
+    </ul>
+<div class="integralDeliveryTitle">客户取货点：我们会为您发货但会产生快递费需自理  需到会员中心补添收货地址</div>
+    <volist name="UserDeliverys" id="UserDelivery">
+        <ul class="user_delivery" id="deliveryChecked" attr-id="{$UserDelivery.Id}">
+            <li><span>{$UserDelivery.consignee}</span><span>{$UserDelivery.mobileNo}</span></li>
+            <li class="user_delivery_address">{$UserDelivery.area}{$UserDelivery.address}</li>
+        </ul>
+    </volist>
+    <button id="integralExchange" attr-id="{$IntegralMall.Id}" attr-deliveryId="" attr-payWay="{$IntegralMall.title}"
+            attr-message="立即兑换">确认兑换
+    </button>
+</section>
+<script>
+    var SCOPE = {
+        'exchange_url': '/dswiliu/index.php?c=IntegralMall&a=exchange',
+        'jump_url': '/dswiliu/index.php?c=IntegralMall&a=exchange',
+    }
+</script>
+<include file="Index/foot"/>

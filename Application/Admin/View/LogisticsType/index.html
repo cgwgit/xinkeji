@@ -1,0 +1,43 @@
+<include file="Index/head"/>
+<!--你自己的样式文件 -->
+<css href="__PUBLIC__/admin/css/style.css" />
+
+<section class="container">
+    <h2>货源分类</h2>
+    <p><button id="button-add" class="btn btn-sm btn-success">添加</button></p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="LogisticsTypes" id="LogisticsType" empty="空">
+            <tr>
+                <td width="50">{$LogisticsType.Id}</td>
+                <td>{$LogisticsType.typeName}</td>
+                <td width="150">
+                    <button attr-id="{$LogisticsType.Id}" id="button-modify" class="btn btn-sm btn-info">修改</button>
+                    <button attr-id="{$LogisticsType.Id}" attr-a="menu" attr-message="删除" id="button-del" href="logistics_type_del" class="btn btn-sm btn-danger">删除</button>
+                </td>
+            </tr>
+        </volist>
+
+        </tbody>
+    </table>
+    <nav>
+        <ul>
+            {$pageRes}
+        </ul>
+    </nav>
+</section>
+<script>
+    var SCOPE = {
+        'add_url' : '/dswiliu/admin.php?c=logisticsType&a=add',
+        'modify_url' : '/dswiliu/admin.php?c=logisticsType&a=modify',
+        'del_url' : '/dswiliu/admin.php?c=logisticsType&a=del',
+    }
+</script>
+<include file="Index/foot"/>

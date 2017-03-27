@@ -1,0 +1,10 @@
+<header>
+    <div class="logo">后台系统</div>
+    <div class="account">
+
+        欢迎 {$adminUser.admin_name} {$adminUser.admin_type_name}登陆
+        <a href="/dswiliu/admin.php?c=PasswordModify" target="admin">修改密码</a>
+        <a href="/dswiliu/admin.php?c=Login&a=loginOut">退出</a>
+
+    </div>
+</header>

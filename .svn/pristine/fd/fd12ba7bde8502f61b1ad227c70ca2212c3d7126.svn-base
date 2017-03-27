@@ -1,0 +1,50 @@
+<include file="Index/head"/>
+
+<CSS href="__PUBLIC__/Index/css/dropload.css"/>
+
+<header class="top_white top_blue_goBack" headerHref="{:U('User/index')}">我的礼品</header>
+
+<section class="IntegralsOrder loadFather">
+
+    <ul class="IntegralsOrderType">
+        <li attr-type="" <eq name="type" value="">class="IntegralsOrderTypeChecked"</eq>>全部</li>
+        <li attr-type="1" <eq name="type" value="1">class="IntegralsOrderTypeChecked"</eq>>待处理</li>
+        <li attr-type="2" <eq name="type" value="2">class="IntegralsOrderTypeChecked"</eq>>已发货</li>
+        <li attr-type="3" <eq name="type" value="3">class="IntegralsOrderTypeChecked"</eq>>已收货</li>
+    </ul>
+    <ul class="loadSon"></ul>
+</section>
+
+<include file="Index/menu"/>
+<script>
+    var SCOPE = {
+        'order_type_url' : '/dswiliu/index.php?c=IntegralOrder',
+        'show_url' : '/dswiliu/index.php?c=IntegralOrder&a=see',
+        'drop_load_url': '/dswiliu/index.php?c=IntegralOrder&a=indexLoad&type={$type}',
+    }
+</script>
+<include file="Index/foot"/>
+<js href="__PUBLIC__/Index/js/dropload.min.js"/>
+<js href="__PUBLIC__/Index/js/drop_load_all.js"/>
+<script>
+    function dataLoad(data) {
+        var result = '';
+
+        for (var i = 0; i < data.length; i++) {
+            result += '<li class="IntegralsOrderList">'
+                    + '<table class="integralMallShopping" id="IntegralsOrderShow" attr-id="' + data[i].Id + '">'
+                    + '<tr><td colspan="2" class="integralMallOrderNo">单号：' + data[i].orderNo + '<span>' + data[i].handleState + '</span></td></tr>'
+                    + '<tr>'
+                    + '<td rowspan="3"><img src=' + data[i].uploadImg + '></td>'
+                    + '<td class="integralMallTitle">' + data[i].title + '</td>'
+                    + '</tr><tr>'
+                    + '<td class="integralMallParameter"><i class="iconfont">&#xe605;</i>' + data[i].integral + '</td>'
+                    + '</tr><tr>'
+                    + '<td class="integralMallOther">'
+                    + '<span>运费：' + data[i].freight + '</span>' //$IntegralMall['surplus'] = $IntegralMall['stock'] - $IntegralMall['sales'];
+                    + '</td>'
+                    + '</tr></table></li>';
+        }
+        return result;
+    }
+</script>

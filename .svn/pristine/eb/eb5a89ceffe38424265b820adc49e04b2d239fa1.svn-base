@@ -1,0 +1,27 @@
+<include file="Index/head" />
+<header class="top_white">账号登陆</header>
+<section class="user_form">
+
+    <!--<div class="user_submit_hint hint_wrong">请输入账号密码</div>-->
+    <form action="" method="post" name="ds_login">
+        <ul class="user_form_group">
+            <li>
+                <span class="user_form_Login">账号</span>
+                <span><input type="tel" placeholder="手机号" name="ds_login" promptNull="请填写账号" promptError="请输入正确手机号码"></span>
+            </li>
+            <li>
+                <span class="user_form_Login">密码</span>
+                <span><input type="password" placeholder="密码" name="ds_password" promptNull="请填写密码"></span>
+            </li>
+        </ul>
+
+        <div class="user_form_hint"><a href="{:U('register/index')}">立即注册</a></div>
+
+        <div class="user_form_button">
+            <button type="button" onclick="login.check()">登陆</button>
+        </div>
+    </form>
+
+</section>
+<include file="Index/foot" />
+<js href="__PUBLIC__/Index/js/login.js" />

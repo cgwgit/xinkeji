@@ -1,0 +1,38 @@
+<include file="Index/head"/>
+
+<a class="top_user" href="/dswiliu/index.php?c=user&a=datum">
+    <div class="user_img_border">
+        <img src="__PUBLIC__/Index/images/userPortrait.png">
+    </div>
+    <ul>
+        <li>{$userCenter.plateNo}</li>
+        <li>车主</li>
+    </ul>
+    <div class="top_user_more">信息管理 ></div>
+</a>
+<section class="user">
+
+    <ul>
+        <li id="li-logisticsOrder" liHref="{:U('logisticsOrder/index')}">我的货单</li>
+        <li class="user_pay">
+            <a href="{:U('logisticsOrder/index',array('type'=>'2'))}"><i class="icon iconfont">&#xe602;</i><br>待付款</a>
+            <a href="{:U('logisticsOrder/index',array('type'=>'3'))}"><i class="icon iconfont">&#xe601;</i><br>已付款</a>
+            <a href=""><i>{$userCenter.integral}</i><br>积分</a>
+        </li>
+    </ul>
+    <ul class="user_menu">
+        <li liHref="{:U('integralMall/index')}">积分商城</li>
+        <li liHref="{:U('integralOrder/index')}">我的礼品</li>
+        <li liHref="/dswiliu/index.php?c=amerce">代缴罚款</li>
+        <li liHref="{:U('amerce/order')}">缴费记录</li>
+        <li liHref="{:U('userDelivery/index')}">收货地址</li>
+        <li liHref="">邀请码：{$userCenter.inviteCode}</li>
+    </ul>
+
+    <div class="user_form_button user_out">
+        <button type="button" liHref="{:U('Login/loginOut')}">退出登陆</button>
+    </div>
+</section>
+
+<include file="Index/menu"/>
+<include file="Index/foot"/>

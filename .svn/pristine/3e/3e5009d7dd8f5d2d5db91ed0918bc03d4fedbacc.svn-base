@@ -1,0 +1,81 @@
+<include file="Index/head"/>
+<!--你自己的样式文件 -->
+<css href="__PUBLIC__/admin/css/style.css"/>
+<section class="container">
+    <h2>物流订单</h2>
+    <div class="form-group">
+        <form action="/dswiliu/admin.php" method="get">
+            <div class="col-md-offset-6 col-sm-2">
+                <select class="form-control" name="handle">
+                    <option value="">状态</option>
+                    <option value="0"
+                    <eq name="search.handle" value="0">selected="selected"</eq>
+                    >未处理</option>
+                    <option value="-1"
+                    <eq name="search.handle" value="-1">selected="selected"</eq>
+                    >已处理</option>
+                    <option value="1"
+                    <eq name="search.handle" value="1">selected="selected"</eq>
+                    >已结款</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" name="orderNo" class="form-control" placeholder="请输入订单号"
+                       value="{$search.orderNo}">
+            </div>
+            <input type="hidden" name="c" value="LogisticsOrder">
+            <input type="hidden" name="a" value="index">
+            <div class="col-sm-1">
+                <button id="button-search" type="submit" class="btn btn-sm btn-info col-sm-12">搜索</button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th width="150">订单号</th>
+            <th>车牌号</th>
+            <th>姓名</th>
+            <th>任务发布人</th>
+            <th>车型</th>
+            <th width="80">状态</th>
+            <th width="170">接单时间</th>
+            <th width="80">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="LogisticsOrders" id="LogisticsOrder" empty="空">
+            <tr>
+                <td>{$LogisticsOrder.orderNo}</td>
+                <td>{$LogisticsOrder.userId|findLinkageById='user','plateNo'}</td>
+                <td>{$LogisticsOrder.userId|findLinkageById='user','fullName'}</td>
+                <td>{$LogisticsOrder.logisticsId|findLinkageById='logistics','release'}</td>
+                <td>{$LogisticsOrder.userId|findLinkageById='user','carType'}</td>
+                <td>
+                    <if condition="$LogisticsOrder.handleBusiness eq 0">
+                        <span class="label label-danger">未处理</span>
+                        <else />
+                        <span class="label label-{$LogisticsOrder.handle|getStatus=array('info','success','info','danger')}">{$LogisticsOrder.handle|getStatus=array('已处理','已结款','已提交','错误')}</span>
+                    </if>
+                </td>
+                <td>{$LogisticsOrder.shippingDate}</td>
+                <td>
+                    <button attr-id="{$LogisticsOrder.Id}" id="button-see" class="btn btn-sm btn-default">查看</button>
+                </td>
+            </tr>
+        </volist>
+
+        </tbody>
+    </table>
+    <nav>
+        <ul>
+            {$pageRes}
+        </ul>
+    </nav>
+</section>
+<script>
+    var SCOPE = {
+        'see_url': '/dswiliu/admin.php?c=LogisticsOrder&a=see',
+    }
+</script>
+<include file="Index/foot"/>

@@ -1,0 +1,24 @@
+<nav>
+    <if condition="$adminUser.admin_type eq 0 ">
+
+        <a href="{:U('admin/index')}" target="admin">员工管理</a>
+        <a href="{:U('logisticsType/index')}" target="admin">货源分类</a>
+        <a href="{:U('logistics/index')}" target="admin">货源信息</a>
+        <a href="{:U('user/index')}" target="admin">会员管理</a>
+        <a href="{:U('logisticsOrder/index')}" target="admin">订单管理</a>
+        <a href="{:U('amerce/index')}" target="admin">罚款管理</a>
+        <a href="{:U('integralMall/index')}" target="admin">商城管理</a>
+        <a href="{:U('integralOrder/index')}" target="admin">商城订单</a>
+
+        <elseif condition="$adminUser.admin_type eq 1"/>
+
+        <a href="{:U('logisticsOrder/index')}" target="admin">订单管理</a>
+
+        <elseif condition="$adminUser.admin_type eq 2"/>
+
+        <a href="{:U('logisticsOrder/index')}" target="admin">订单管理</a>
+        <a href="{:U('amerce/index')}" target="admin">罚款管理</a>
+
+    </if>
+
+</nav>

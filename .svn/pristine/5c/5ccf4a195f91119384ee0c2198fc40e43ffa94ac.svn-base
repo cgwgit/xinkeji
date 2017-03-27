@@ -1,0 +1,30 @@
+<include file="Index/head"/>
+
+<section class="user integral">
+    <ul class="integralMall">
+        <li>
+            <img src="{$IntegralMall.uploadImg}">
+        </li>
+        <li class="integralMallTitle">{$IntegralMall.title}</li>
+        <li class="integralMallParameter"><i class="iconfont">&#xe605;</i>{$IntegralMall.integral}</li>
+        <li class="integralMallOther">
+            <span>运费：{$IntegralMall.freight}</span>
+            <span>剩余：{$IntegralMall.surplus}</span>
+            <span>销量：{$IntegralMall.sales}</span>
+        </li>
+    </ul>
+
+    <ul class="integralMallContent">
+        <li class="integralMallContentTitle">商品详情</li>
+        <li>{$IntegralMall.content}</li>
+    </ul>
+
+    <button id="integralShoppingCart" attr-id="{$IntegralMall.Id}" attr-payWay="{$IntegralMall.title}" attr-message="立即兑换">立即兑换</button>
+</section>
+<script>
+    var SCOPE = {
+        'exchange_url' : '/dswiliu/index.php?c=IntegralMall&a=judge',
+        'jump_url' : '/dswiliu/index.php?c=IntegralMall&a=exchange',
+    }
+</script>
+<include file="Index/foot"/>

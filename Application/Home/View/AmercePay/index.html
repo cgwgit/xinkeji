@@ -1,0 +1,82 @@
+<include file="Index/head"/>
+<css href="__PUBLIC__/Index/mobiscroll/mobiscroll.core-2.6.2.css"/>
+<css href="__PUBLIC__/Index/mobiscroll/mobiscroll.android-ics-2.6.2.css"/>
+<header class="top_white">确认并支付罚款</header>
+<form class="form-horizontal" id="singcms-form" ng-app="amerce">
+    <section class="user_form" ng-controller="myAmerce">
+        <ul class="user_form_group">
+            <li>
+                <span>处 罚 金 额</span>
+                <span>{$Amerce.money}</span>
+            </li>
+            <li>
+                <span>处 罚 日 期</span>
+                <span>{$Amerce.amerceDateTime}</span>
+            </li>
+            <li>
+                <span>滞 纳 金</span>
+                <span>{$Amerce.lateMoney}</span>
+            </li>
+            <li>
+                <span>罚 单 单 号</span>
+                <span>{$Amerce.amerceNo}</span>
+            </li>
+            <li>
+                <span>服 务 费</span>
+                <span>{$Amerce.serviceMoney}</span>
+            </li>
+            <li>
+                <span>总 金 额</span>
+                <span>{$Amerce.moneyAll}</span>
+            </li>
+        </ul>
+
+        <div class="user_form_button">
+            <button type="button" onclick="callpay()">立即支付</button>
+        </div>
+    </section>
+</form>
+<script>
+    var SCOPE = {
+        'save_url': '/dswiliu/index.php?c=amerce&a=add',
+        'jump_url': '/dswiliu/index.php/Home/AmercePay',
+    }
+</script>
+<include file="Index/foot"/>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>微信支付样例-支付</title>
+    <script type="text/javascript">
+        //调用微信JS api 支付
+        //在线充值
+        function jsApiCall() //jsApiCall 数据处理
+        {
+            WeixinJSBridge.invoke(
+                    'getBrandWCPayRequest',
+                    {$parameters},
+                    function (res) {
+                        if (res.err_msg == 'get_brand_wcpay_request:ok') {
+                            return dialog.success('恭喜您，支付成功!<br>订单状态更新可能会有5～20秒延迟<br>请稍后查看订单!', '{:U('amerce/order')}');
+                             //登录成功 跳转到主要页面
+                        } else {
+                            return dialog.error('支付发生异常<br>请你重新提交');
+                            //支付发生异常
+                        }
+                    }
+            );
+        }
+        function callpay() {
+            if (typeof WeixinJSBridge == "undefined") {
+                if (document.addEventListener) {
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            } else {
+                jsApiCall();
+            }
+        }
+    </script>
+</head>

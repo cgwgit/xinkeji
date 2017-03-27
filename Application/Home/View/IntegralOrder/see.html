@@ -1,0 +1,38 @@
+<include file="Index/head"/>
+
+<header class="top_white top_blue_goBack" onclick="javascript:history.go(-1);">我的礼品</header>
+
+<section class="user integral">
+    <table class="integralMallShopping">
+        <tr>
+
+            <td colspan="2" class="integralMallOrderNo">
+                订单号：{$IntegralOrders.orderNo}
+                <span>{$IntegralOrders.handleState}</span>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3"><img src="{$IntegralOrderMall.uploadImg}"></td>
+            <td class="integralMallTitle">{$IntegralOrderMall.title}</td>
+        </tr>
+        <tr>
+            <td class="integralMallParameter"><i class="iconfont">&#xe605;</i>{$IntegralOrderMall.integral}</td>
+        </tr>
+        <tr>
+            <td class="integralMallOther">
+                <span>运费：{$IntegralOrderMall.freight}</span>
+                <!--<span>剩余：{$IntegralOrderMall.stock}</span>-->
+                <!--<span>销量：{$IntegralOrderMall.sales}</span>-->
+            </td>
+        </tr>
+    </table>
+    <div class="integralDeliveryTitle">邮寄地址</div>
+    <ul class="user_delivery">
+        <li><span>{$UserDeliverys.consignee}</span><span>{$UserDeliverys.mobileNo}</span></li>
+        <li class="user_delivery_address">{$UserDeliverys.area}{$UserDeliverys.address}</li>
+    </ul>
+</section>
+
+<include file="Index/menu"/>
+
+<include file="Index/foot"/>

@@ -1,0 +1,49 @@
+<include file="Index/head"/>
+
+<CSS href="__PUBLIC__/Index/css/dropload.css"/>
+
+<header class="top_white top_blue_goBack" headerHref="{:U('User/index')}">缴费记录</header>
+<section class="logisticsOrder loadFather">
+
+    <ul class="logisticsOrderType">
+        <li attr-type=""<eq name="type" value="">class="logisticsOrderTypeChecked"</eq>>全部</li>
+        <li attr-type="1"<eq name="type" value="1">class="logisticsOrderTypeChecked"</eq>>未处理</li>
+        <li attr-type="2"<eq name="type" value="2">class="logisticsOrderTypeChecked"</eq>>已退回</li>
+        <li attr-type="3"<eq name="type" value="3">class="logisticsOrderTypeChecked"</eq>>已处理</li>
+    </ul>
+    <ul class="loadSon"></ul>
+</section>
+<include file="Index/menu"/>
+<script>
+    var SCOPE = {
+        'order_type_url': '/dswiliu/index.php?c=amerce&a=order',
+        'show_url' : '/dswiliu/index.php?c=amerce&a=orderSee',
+        'drop_load_url': '/dswiliu/index.php?c=amerce&a=orderLoad&type={$type}',
+    }
+</script>
+<include file="Index/foot"/>
+<js href="__PUBLIC__/Index/js/dropload.min.js"/>
+<js href="__PUBLIC__/Index/js/drop_load_all.js"/>
+<script>
+    function dataLoad(data) {
+        var result = '';
+
+        for (var i = 0; i < data.length; i++) {
+            result += '<li class="logisticsOrderList">'
+                    + '<table id="logisticsOrderShow" attr-id="' + data[i].Id + '">'
+                    + '<tr><th colspan="2">罚款单号：' + data[i].amerceNo + '<span>' + data[i].status + '</span></th></tr>'
+
+                    + '<tr>'
+                    + '<td><span>处罚金额</span>' + data[i].money + '</td>'
+                    + '<td><span>滞纳金</span>' + data[i].lateMoney + '元/吨</td>'
+                    + '</tr><tr>'
+                    + '<td><span>服务费</span>' + data[i].serviceMoney + '</td>'
+                    + '<td><span>总金额</span>' + data[i].moneyAll + '</td>'
+                    + '</tr>'
+                    + '<tr><td colspan="2"><span>处罚日期</span>' + data[i].amerceDateTime + '</td></tr>'
+                    + '<tr><td colspan="2"><span>提交时间</span>' + data[i].submitDateTime + '</td></tr>'
+                    + '</table></li>';
+        }
+        return result;
+    }
+</script>

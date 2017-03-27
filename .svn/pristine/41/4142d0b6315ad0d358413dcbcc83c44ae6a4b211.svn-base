@@ -1,0 +1,54 @@
+<include file="Index/head"/>
+
+<header class="top_white top_blue_goBack" onclick="javascript:history.go(-1);">罚款详细</header>
+
+<section class="logisticsOrder">
+
+    <ul>
+        <li class="logisticsOrderList">
+            <table>
+                <tr>
+                    <th colspan="2">
+                        罚款单号:{$Amerces.amerceNo}
+                        <span>
+                            <if condition="$Amerces.financeHandle eq 0">
+                                未处理
+                                <elseif condition="$Amerces.financeHandle eq -1"/>
+                                已退回
+                                <elseif condition="$Amerces.financeHandle eq 1"/>
+                                已处理
+                            </if>
+                        </span>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td><span>处罚金额</span>{$Amerces.money}</td>
+                    <td><span>滞纳金</span>{$Amerces.lateMoney}</td>
+                </tr>
+                <tr>
+                    <td><span>服务费</span>{$Amerces.serviceMoney}</td>
+                    <td><span>总金额</span>{$Amerces.moneyAll}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span>处罚日期</span>{$Amerces.amerceDateTime}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span>提交时间</span>{$Amerces.submitDateTime}</td>
+                </tr>
+                <if condition="$Amerces.financeHandle eq -1">
+                    <tr>
+                        <td colspan="2"><span>退回原因</span>{$Amerces.reason|default="无原因"}</td>
+                    </tr>
+                </if>
+            </table>
+        </li>
+
+    </ul>
+</section>
+
+<include file="Index/menu"/>
+<script>
+    var SCOPE = {}
+</script>
+<include file="Index/foot"/>

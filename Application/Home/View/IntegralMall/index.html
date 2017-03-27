@@ -1,0 +1,36 @@
+<include file="Index/head"/>
+
+<CSS href="__PUBLIC__/Index/css/dropload.css"/>
+<header class="top_white top_blue_goBack" onclick="javascript:history.go(-1);">积分商城</header>
+
+<section class="integralMall loadFather">
+    <ul class="integralMallList loadSon"></ul>
+</section>
+
+<include file="Index/menu"/>
+<script>
+    var SCOPE = {
+        'show_url' : '/dswiliu/index.php?c=IntegralMall&a=see',
+        'drop_load_url': '/dswiliu/index.php?c=IntegralMall&a=indexLoad',
+    }
+</script>
+<include file="Index/foot"/>
+<js href="__PUBLIC__/Index/js/dropload.min.js"/>
+<js href="__PUBLIC__/Index/js/drop_load_all.js"/>
+<script>
+    function dataLoad(data) {
+        var result = '';
+
+        for (var i = 0; i < data.length; i++) {
+            result += '<li id="IntegralMallShow" attr-id="' + data[i].Id + '">'
+                    + '<img src="' + data[i].uploadImg + '">'
+                    + '<div class="integralMallTitle">' + data[i].title + '</div>'
+                    + '<div class="integralMallParameter">'
+                    + '<i class="iconfont">&#xe605;</i>' + data[i].integral + ''
+                    + '<span>剩余数量：' + data[i].surplus + '</span>'
+                    + '</div>'
+                    + '</li>';
+        }
+        return result;
+    }
+</script>

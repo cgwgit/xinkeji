@@ -1,0 +1,97 @@
+<include file="Index/head"/>
+
+<header class="top_white top_blue_goBack" onclick="javascript:history.go(-1);">我的货单</header>
+
+<section class="logisticsOrder">
+
+    <ul>
+        <li class="logisticsOrderList">
+            <table>
+                <tr>
+                    <th colspan="2">
+                        {$LogisticsOrderLogistics.release}
+                        <span>{$LogisticsOrders.handle} </span>
+                    </th>
+                </tr>
+                <tr>
+                    <td><span>货物名称</span>{$LogisticsOrderLogistics.goodsName}</td>
+                    <td>
+                        <span>支付方式</span>
+                        <if condition="$LogisticsOrderLogistics.payWay eq 1">货到付款</if>
+                        <if condition="$LogisticsOrderLogistics.payWay eq 2">发货付款</if>
+                        <if condition="$LogisticsOrderLogistics.payWay eq 3">发货定金-货到结款</if>
+						<if condition="$LogisticsOrderLogistics.payWay eq 4">回单结算</if>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span>装货地</span>{$LogisticsOrderLogistics.loadingAddr}</td>
+                    <td><span>卸货地</span>{$LogisticsOrderLogistics.unloadingAddr}</td>
+                </tr>
+                <tr>
+                    <td><span>装货吨数</span>{$LogisticsOrders.tonnage}吨</td>
+                    <td><span>价钱</span>{$LogisticsOrderLogistics.Price}元/吨</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span>接单时间</span>{$LogisticsOrders.shippingDate}</td>
+                </tr>
+            </table>
+        </li>
+        <li class="logisticsOrderList">
+            <table>
+                <tr>
+                    <th colspan="2">
+                        回执单
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="2"><span>收单日期</span>{$LogisticsOrderReceipt.acquiringDate}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span>卸货日期</span>{$LogisticsOrderReceipt.dischargeData}</td>
+                </tr>
+                <tr>
+                    <td><span>代理商</span>{$LogisticsOrderLogistics.goodsName}</td>
+                    <td>
+                        <span>是否加油卡</span>
+                        <if condition="$LogisticsOrderReceipt.petrolCard eq 0">是</if>
+                        <if condition="$LogisticsOrderReceipt.petrolCard eq 1">否</if>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span>卸重</span>{$LogisticsOrderReceipt.dischargeWeight} 吨</td>
+                    <td><span>亏吨</span>{$LogisticsOrderReceipt.lackWeight} 吨</td><!--lackWeight-->
+                </tr>
+                <tr>
+                    <td><span>允亏比例</span>{$LogisticsOrderLogistics.allowProportion} 吨</td><!--allowProportion-->
+                    <td><span>允亏吨数</span>{$LogisticsOrderReceipt.allowTonnage} 吨</td><!--allowTonnage-->
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><span>实际亏吨</span>{$LogisticsOrderReceipt.actualLackWeight} 吨</td><!--actualLackWeight-->
+                </tr>
+                <tr>
+                    <td><span>亏扣单价</span>{$LogisticsOrderLogistics.lackPrice} 元/吨</td><!--lackPrice-->
+                    <td><span>亏扣总额</span>{$LogisticsOrderReceipt.allLackPrice} 元</td>
+                </tr><!--allLackPrice-->
+                <tr>
+                    <td><span>运费总价</span>{$LogisticsOrderReceipt.allPrice} 元</td><!--allPrice-->
+                    <td><span>应付运费</span>{$LogisticsOrderReceipt.payPrice} 元</td><!--prepaidMoney-->
+                </tr>
+                <tr>
+                    <td><span>已付金额</span>{$LogisticsOrderReceipt.prepaidMoney} 元</td><!--prepaidMoney-->
+                    <td><span>欠车上</span>{$LogisticsOrderReceipt.arrearsPrice} 元</td><!--arrearsPrice-->
+                </tr>
+                <!--<tr>-->
+                    <!--<td><span>业务员</span>{$LogisticsOrderLogistics.tonnage}吨</td>-->
+                    <!--<td><span>财务员</span>{$LogisticsOrderLogistics.Price}元/吨</td>-->
+                <!--</tr>-->
+            </table>
+        </li>
+    </ul>
+</section>
+
+<include file="Index/menu"/>
+<script>
+    var SCOPE = {}
+</script>
+<include file="Index/foot"/>

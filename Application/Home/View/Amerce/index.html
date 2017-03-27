@@ -1,0 +1,163 @@
+<include file="Index/head"/>
+<css href="__PUBLIC__/Index/mobiscroll/mobiscroll.core-2.6.2.css" />
+<css href="__PUBLIC__/Index/mobiscroll/mobiscroll.android-ics-2.6.2.css" />
+<header class="top_white top_blue_goBack" onclick="javascript:history.go(-1);">填写罚款信息</header>
+<form class="form-horizontal" id="singcms-form" ng-app="amerce">
+    <section class="user_form" ng-controller="myAmerce">
+        <ul class="user_form_group">
+            <li>
+                <span>处 罚 金 额</span>
+                <span><input name="money" ng-model="money" type="number" placeholder="请输入罚款金额"></span>
+            </li>
+            <li>
+                <span>处 罚 日 期</span>
+                <span><input name="amerceDateTime" ng-model="amerceDateTime" type="text" placeholder="请输入处罚日期" id="test_default"></span>
+            </li>
+            <li>
+                <span>滞 纳 金</span>
+                <span>{{lateMoney()}}元<input name="lateMoney" type="hidden" value="{{lateMoney()}}"></span>
+            </li>
+            <li>
+                <span>罚 单 单 号</span>
+                <span><input name="amerceNo" type="number" placeholder="请输入罚单单号"></span>
+            </li>
+            <li>
+                <span>单 号 审 核</span>
+                <span><input name="amerceNoRepeat" type="number" placeholder="再次输入罚单单号确认"></span>
+            </li>
+            <li>
+                <span>罚 单 图 片</span>
+                <span class="user_amerce_button">
+                    <button type="button" id="amerce_img">上传图片</button>
+                    <input class="js_upFile" type="file" name="cover">
+                    <div class="js_showBox"></div>
+                </span>
+            </li>
+            <li>
+                <span>服 务 费</span>
+                <span>{{serviceMoney()}}元<input name="serviceMoney" type="hidden" value="{{serviceMoney()}}"></span>
+            </li>
+        </ul>
+
+        <div class="user_form_hint"><span>总计：{{moneyAll()}}元<input name="moneyAll" type="hidden" value="{{moneyAll()}}"></span></div>
+
+        <div class="user_form_button"><button type="button" id="singcms-button-submit">立即下单</button></div>
+    </section>
+</form>
+<script>
+    var SCOPE = {
+        'save_url' : '/dswiliu/index.php?c=amerce&a=add',
+        'jump_url' : '/dswiliu/index.php?c=amercePay',
+    }
+</script>
+
+<include file="Index/foot"/>
+<js href="__PUBLIC__/Index/js/angular.min.js" />
+<script>
+    angular.module('amerce',[])
+    .controller('myAmerce',function ($scope) {
+
+        $scope.money='';
+        $scope.amerceDateTime='';//2016/01/05
+        //滞纳金
+        $scope.lateMoney=function () {
+            var money = $scope.money;
+            var nowDate = new Date().toLocaleDateString();
+            var amerceDate = $scope.amerceDateTime;
+            if(amerceDate){
+                var dayDifference = GetDateDiff(amerceDate,nowDate)
+                if(dayDifference > 15){
+                    var lateMoneyCount = (dayDifference - 15) * money * 0.003;
+                    if(lateMoneyCount > money){
+                        lateMoneyCount = money;
+                    }
+                    lateMoneyCount = Math.round(lateMoneyCount*100)/100;
+                    return lateMoneyCount
+                }
+            }
+            return 0;
+        }
+        //服务费
+        $scope.serviceMoney=function () {
+            var money = $scope.money;
+            var serviceMoneyCount = 0
+            if(money <= 50){
+                serviceMoneyCount = 2
+            }else if(money > 50 && money <= 100){
+                serviceMoneyCount = 5
+            }else if(money > 100 && money <= 200){
+                serviceMoneyCount = 10
+            }
+
+            return serviceMoneyCount;
+        }
+
+
+        $scope.moneyAll=function () {
+            var money = $scope.money;
+            var lateMoneyCount = $scope.lateMoney();
+            var serviceMoneyCount = $scope.serviceMoney();
+
+            var moneyAllCount = money + lateMoneyCount + serviceMoneyCount;
+            return moneyAllCount;
+        }
+    })
+
+    //计算天数差的函数，通用
+    function GetDateDiff(startDate,endDate)
+    {
+        var startTime = new Date(Date.parse(startDate.replace(/-/g,   "/"))).getTime();
+        var endTime = new Date(Date.parse(endDate.replace(/-/g,   "/"))).getTime();
+        var dates = Math.abs((startTime - endTime))/(1000*60*60*24);
+        return  dates;
+    }
+
+</script>
+<js href="__PUBLIC__/Index/mobiscroll/mobiscroll.core-2.6.2.js" />
+<js href="__PUBLIC__/Index/mobiscroll/mobiscroll.core-2.6.2-zh.js" />
+<js href="__PUBLIC__/Index/mobiscroll/mobiscroll.datetime-2.6.2.js" />
+<js href="__PUBLIC__/Index/mobiscroll/mobiscroll.android-ics-2.6.2.js" />
+<script type="text/javascript">
+
+        $('#test_default').click(function () {
+            var _date = new Date();
+            var maxDateYear = _date.getFullYear();
+            var maxDateMonth = _date.getMonth();
+            var maxDateDate = _date.getDate() -1;
+            var minDateYear = _date.getFullYear() - 3;
+            var opt = {}
+
+            opt.datetime = {
+                preset: 'date',
+                minDate: new Date(minDateYear, maxDateMonth, maxDateDate),
+                maxDate: new Date(maxDateYear, maxDateMonth, maxDateDate),
+                stepMinute: 5
+            };
+
+            <!--Script-->
+
+            $('#test_default').val('').scroller('destroy').scroller($.extend(opt['datetime'], {
+                theme: 'android-ics light',
+                mode: 'mixed',
+                display: 'Modal',
+                lang: 'zh',
+                dateOrder: 'yymd',
+                dateFormat: 'yy/mm/dd',
+                defaultValue: [2015,01,01],//设置初始值
+            }));
+        });
+</script>
+<js href="__PUBLIC__/Index/js/jquery.uploadView.js" />
+<script>
+    $(".js_upFile").uploadView({
+        uploadBox: '.user_amerce_button',//设置上传框容器
+        showBox: '.js_showBox',//设置显示预览图片的容器
+        width: 100, //预览图片的宽度，单位px
+        height: 50, //预览图片的高度，单位px
+        allowType: ["gif", "jpeg", "jpg", "bmp", "png"], //允许上传图片的类型
+        maxSize: 5, //允许上传图片的最大尺寸，单位M
+        success: function (e) {
+            $(".user_amerce_button button").text('上传成功');;
+        }
+    });
+</script>

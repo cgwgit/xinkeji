@@ -1,0 +1,53 @@
+<include file="Index/head"/>
+
+<CSS href="__PUBLIC__/Index/css/dropload.css"/>
+
+<header class="top_white top_blue_goBack" headerHref="{:U('User/index')}">我的货单</header>
+
+<section class="logisticsOrder loadFather">
+
+    <ul class="logisticsOrderType">
+        <li attr-type="" <eq name="type" value="">class="logisticsOrderTypeChecked"</eq>>全部</li>
+        <li attr-type="1" <eq name="type" value="1">class="logisticsOrderTypeChecked"</eq>>待处理</li>
+        <li attr-type="2" <eq name="type" value="2">class="logisticsOrderTypeChecked"</eq>>未结款</li>
+        <li attr-type="3" <eq name="type" value="3">class="logisticsOrderTypeChecked"</eq>>已结款</li>
+    </ul>
+    <ul class="loadSon"></ul>
+</section>
+
+<include file="Index/menu"/>
+<script>
+    var SCOPE = {
+        'order_type_url' : '/dswiliu/index.php?c=logisticsOrder',
+        'show_url' : '/dswiliu/index.php?c=logisticsOrder&a=see',
+        'drop_load_url': '/dswiliu/index.php?c=logisticsOrder&a=indexLoad&type={$type}',
+    }
+</script>
+<include file="Index/foot"/>
+<js href="__PUBLIC__/Index/js/dropload.min.js"/>
+<js href="__PUBLIC__/Index/js/drop_load_all.js"/>
+<script>
+    function dataLoad(data) {
+        var result = '';
+
+        for (var i = 0; i < data.length; i++) {
+            result += '<li class="logisticsOrderList">'
+                    + '<table id="logisticsOrderShow" attr-id="' + data[i].Id + '">'
+                    + '<tr><th colspan="2">单号：' + data[i].orderNo + '<span>' + data[i].handle + '</span></th></tr>'
+                    + '<tr><td colspan="2"><span>发货人</span>' + data[i].release + '</td></tr>'
+                    + '<tr>'
+                    + '<td><span>货物名称</span>' + data[i].goodsName + '</td>'
+                    + '<td><span>价钱</span>' + data[i].Price + '元/吨</td>'
+                    + '</tr><tr>'
+                    + '<td><span>装货地</span>' + data[i].loadingAddr + '</td>'
+                    + '<td><span>卸货地</span>' + data[i].unloadingAddr + '</td>'
+                    + '</tr><tr>'
+                    + '<td><span>装货吨数</span>' + data[i].tonnage + '吨</td>'
+                    + '<td></td>'
+                    + '</tr><tr>'
+                    + '<td colspan="2"><span>接单时间</span>' + data[i].shippingDate + '</td>'
+                    + '</tr></table></li>';
+        }
+        return result;
+    }
+</script>

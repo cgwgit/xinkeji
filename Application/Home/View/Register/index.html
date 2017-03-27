@@ -1,0 +1,43 @@
+<include file="Index/head" />
+<header class="top_white">立即注册</header>
+<section class="user_form">
+
+    <form name="register" method="post">
+
+        <ul class="user_form_group">
+            <li>
+                <span>手 机 号</span>
+                <span><input type="number" name="mobileNo" placeholder="请输入手机号(登陆账号)"></span>
+            </li>
+            <li>
+                <span>密 码</span>
+                <span><input type="password" name="password" placeholder="输入会员密码(登陆密码)"></span>
+            </li>
+            <li>
+                <span>确 认 密 码</span>
+                <span><input type="password" name="passwordRepeat" placeholder="输入重复会员密码"></span>
+            </li>
+            <li>
+                <span>姓 名</span>
+                <span><input type="text" name="fullName" placeholder="请输入自己真实姓名"></span>
+            </li>
+            <li>
+                <span>车 牌 号</span>
+                <!--<span class="carArea">辽A<b>&or;</b></span>-->
+                <span><input type="email" name="plateNo" placeholder="请输入车牌号码"></span>
+            </li>
+            <li>
+                <span>车 型</span>
+                <span><input type="text" name="carType" placeholder="请输入车型"></span>
+            </li>
+            <li>
+                <span>邀 请 码</span>
+                <span><input type="email" name="inviteCode" placeholder="输入邀请码"></span>
+            </li>
+        </ul>
+        <div class="user_form_hint"><span>注：</span>以上信息除邀请码均为必填项<br>除密码外均不许修改, 请认真填写</div>
+        <div class="user_form_button"><button type="button"  onclick="login.check()">立即注册</button></div>
+    </form>
+</section>
+<include file="Index/foot" />
+<js href="__PUBLIC__/Index/js/register.js" />

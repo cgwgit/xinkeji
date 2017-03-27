@@ -1,0 +1,87 @@
+<include file="Index/head"/>
+<!--你自己的样式文件 -->
+<css href="__PUBLIC__/admin/css/style.css"/>
+<?php
+$LogisticsTypes = D('LogisticsType')->getSelectLogisticsType()
+?>
+<section class="container">
+    <h2>货源信息</h2>
+    <div class="form-group">
+        <div class="col-sm-1">
+            <button id="button-add" class="btn btn-sm btn-success col-sm-12">添加</button>
+        </div>
+        <form action="/dswiliu/admin.php" method="get">
+            <div class="col-md-offset-5 col-sm-2">
+                <select class="form-control" name="searchTypeId">
+                    <option value="">请选择货物类别</option>
+                    <foreach name="LogisticsTypes" item="LogisticsType">
+                        <option value="{$LogisticsType.Id}"
+                        <eq name="search.searchTypeId" value="$LogisticsType.Id">selected="selected"</eq>
+                        >{$LogisticsType.typeName}</option>
+                    </foreach>
+                </select>
+            </div>
+
+            <div class="col-sm-3">
+                <input type="text" name="searchRelease" class="form-control" placeholder="发布人关键字"
+                       value="{$search.searchRelease}">
+            </div>
+            <input type="hidden" name="c" value="logistics">
+            <input type="hidden" name="a" value="index">
+            <div class="col-sm-1">
+                <button id="button-search" type="submit" class="btn btn-sm btn-info col-sm-12">搜索</button>
+            </div>
+        </form>
+    </div>
+
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>发布人</th>
+            <th>类别</th>
+            <th>货物名称</th>
+            <th>装货地</th>
+            <th>卸货地</th>
+            <th>剩余量</th>
+            <th>发布时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="Logistics" id="Logistic" empty="空">
+            <tr>
+                <td width="50">{$Logistic.Id}</td>
+                <td>{$Logistic.release}</td>
+                <td>{$Logistic.typeId|getLogisticsTypeFind}</td>
+                <td>{$Logistic.goodsName}</td>
+                <td>{$Logistic.loadingAddr}</td>
+                <td>{$Logistic.unloadingAddr}</td>
+                <td>{$Logistic.surplus}吨</td>
+                <td>{$Logistic.releaseDateTime}</td>
+                <td>
+                    <button attr-id="{$Logistic.Id}" id="button-modify" class="btn btn-sm btn-info">修改</button>
+                    <button attr-id="{$Logistic.Id}" attr-a="menu" attr-message="删除" id="button-del"
+                            class="btn btn-sm btn-danger">删除
+                    </button>
+                </td>
+            </tr>
+        </volist>
+
+        </tbody>
+    </table>
+    <nav>
+        <ul>
+            {$pageRes}
+        </ul>
+    </nav>
+</section>
+<script>
+    var SCOPE = {
+        'add_url': '/dswiliu/admin.php?c=logistics&a=add',
+        'modify_url': '/dswiliu/admin.php?c=logistics&a=modify',
+        'del_url': '/dswiliu/admin.php?c=logistics&a=del',
+    }
+</script>
+<include file="Index/foot"/>

@@ -1,0 +1,20 @@
+<php>$LogisticsTypes = D('LogisticsType')->getSelectLogisticsType()</php>
+<nav class="bottom_menu">
+    <a href="{:U('Index/index')}" <if condition="$dsMenu eq 1">class="bottom_menu_selected"</if>><i class="icon iconfont">&#xe607;</i><br>首页</a>
+    <a id="logisticsType" <if condition="$dsMenu eq 2">class="bottom_menu_selected"</if>>
+        <i class="iconfont">&#xe60b;</i><br>分类
+        <ul>
+            <foreach name="LogisticsTypes" item="LogisticsType">
+                <li class="J_typeId" attr-id="{$LogisticsType.Id}">{$LogisticsType.typeName}</li>
+            </foreach>
+        </ul>
+    </a>
+    <a href="{:U('integralMall/index')}" <if condition="$dsMenu eq 3">class="bottom_menu_selected"</if>><i class="iconfont">&#xe608;</i><br>积分商城</a>
+    <a href="{:U('user/index')}" <if condition="$dsMenu eq 4">class="bottom_menu_selected"</if>><i class="iconfont">&#xe600;</i><br>会员中心</a>
+</nav>
+
+<script>
+    var SCOPE = {
+        'type_url' : '/dswiliu/index.php?c=index',
+    }
+</script>
