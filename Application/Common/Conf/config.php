@@ -18,10 +18,10 @@ return array(
 
     'WECHAT'   => array(
         'TOKEN' => 'DSwuliu', //微信TOKEN
-        'APPID' => 'wx12462642e06de0df', //微信APPID
-        'APPSECRET' => '26fa5708c839d3f07bd10cf113add2ee', //微信APPSECRET
-        'MCHID' => '1407263302', //微信商户号
-        'SIGN' => '0da73d6db1e15b63514354660b6eac52', //微信支付签名
+        'APPID' => '', //微信APPID
+        'APPSECRET' => '', //微信APPSECRET
+        'MCHID' => '', //微信商户号
+        'SIGN' => '', //微信支付签名
         //=======【curl代理设置】===================================
         /**
          * TODO：这里设置代理机器，只有需要代理的时候才设置，不需要代理，请设置为0.0.0.0和0
